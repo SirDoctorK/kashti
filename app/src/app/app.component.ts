@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Kashti';
+
+  showDiv = {
+    login: true,
+    content: false,
+    table: false,
+  };
 }
