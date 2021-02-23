@@ -1,0 +1,177 @@
+@import '../../_global_variables';
+@import '../../_global_states';
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  background-color: #2541b2;
+  color: white;
+  font-weight: 600;
+}
+
+.toolbar img {
+  margin: 0 16px;
+}
+
+.toolbar #twitter-logo {
+  height: 40px;
+  margin: 0 16px;
+}
+
+.toolbar #twitter-logo:hover {
+  opacity: 0.8;
+}
+
+.heading-text{
+  margin-left:5%;
+}
+
+.login-button {
+
+}
+
+.spacer {
+  flex: 1;
+}
+.container {
+  align-items: center;
+  background: #17b890;
+  border-radius: 40px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  display: flex;
+  height: 35px;
+  justify-content: center;
+  position: relative;
+  width: 135px;
+  margin-right: 20px;
+}
+.login {
+  color: white;
+  padding-left: 38px;
+  transition: opacity 300ms;
+  user-select: none;
+  -moz-user-select: none;
+}
+
+.logout {
+  color: white;
+  position: absolute;
+  opacity: 0;
+  user-select: none;
+  -moz-user-select: none;
+}
+
+.login-welcome{
+  text-align: center;
+}
+
+.fingerprint {
+  left: -8px;
+  opacity: 0;
+  position: absolute;
+  stroke: #342e37;
+  top: -9px;
+  transition: opacity 1ms;
+}
+.fingerprint-active {
+  stroke: #fff;
+}
+.fingerprint-out {
+  opacity: 1;
+}
+.odd {
+  stroke-dasharray: 0px 50px;
+  stroke-dashoffset: 1px;
+  transition: stroke-dasharray 1ms;
+}
+.even {
+  stroke-dasharray: 50px 50px;
+  stroke-dashoffset: -41px;
+  transition: stroke-dashoffset 1ms;
+}
+.ok {
+  opacity: 0;
+}
+.active.container {
+  animation: 6s Container;
+}
+.active .login {
+  opacity: 0;
+  animation: 6s Text forwards;
+}
+
+.active .logout {
+  opacity: 1;
+  animation: 6s Logout forwards;
+}
+
+.active .fingerprint {
+  opacity: 1;
+  transition: opacity 300ms 200ms;
+}
+.active .fingerprint-base .odd {
+  stroke-dasharray: 50px 50px;
+  transition: stroke-dasharray 800ms 100ms;
+}
+.active .fingerprint-base .even {
+  stroke-dashoffset: 0px;
+  transition: stroke-dashoffset 800ms;
+}
+.active .fingerprint-active .odd {
+  stroke-dasharray: 50px 50px;
+  transition: stroke-dasharray 2000ms 1500ms;
+}
+.active .fingerprint-active .even {
+  stroke-dashoffset: 0px;
+  transition: stroke-dashoffset 2000ms 1300ms;
+}
+.active .fingerprint-out {
+  opacity: 0;
+  transition: opacity 300ms 4100ms;
+}
+.active .ok {
+  opacity: 1;
+  animation: 6s Ok forwards;
+}
+
+@keyframes Container {
+  0% { width: 135px }
+  6% { width: 38px }
+  71% { transform: scale(1); }
+  75% { transform: scale(1.2); }
+  77% { transform: scale(1); }
+  94% { width: 38px }
+  100% { width: 135px; }
+}
+@keyframes Login {
+  0% { opacity: 1; transform: scale(1); }
+  6% { opacity: 0; transform: scale(0.5); }
+
+  94% { opacity: 0; transform: scale(0.5); }
+  //100% { opacity: 1; transform: scale(1); }
+}
+@keyframes Ok {
+  0% { opacity: 0 }
+  70% { opacity: 0; transform: scale(0); }
+  75% { opacity: 1; transform: scale(1.1); }
+  77% { opacity: 1; transform: scale(1); }
+  92% { opacity: 1; transform: scale(1); }
+  96% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 0 }
+}
+
+@keyframes Logout {
+  0% { opacity: 0;}
+  94% { opacity: 0; transform: scale(0.5); }
+  100% {opacity: 1; transform: scale(1);  }
+}
+
+@keyframes login-w {
+  100% {display:none;}
+}
+
