@@ -1,7 +1,7 @@
 <div class="toolbar" role="banner">
     <h1 class="heading-text">Welcome to Kashti 2.0</h1>
     <div class="spacer"></div>
-        <div class="container" (click)="showDiv.login = !showDiv.login;" onclick="this.classList.toggle('active')">
+        <div class="container" (click)="showDiv.login = !showDiv.login;" onclick="this.classList.toggle('active')" (click)="getToken()">
             <span class="login" >LOGIN</span>
             <span class="logout">LOGOUT</span>
             <svg class="fingerprint fingerprint-base" xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 100 100">
