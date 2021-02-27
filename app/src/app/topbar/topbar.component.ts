@@ -11,7 +11,6 @@ export class TopbarComponent implements OnInit {
 
   title = 'kashti';
   apiAddress = ''; // Enter API address here
-  rootPassword = ''; // Enter Root Password here
 
   showDiv = {
     login: true,
@@ -22,18 +21,13 @@ export class TopbarComponent implements OnInit {
   }
 
   async getToken() {
-    console.log(this.rootPassword);
     let client = new brigade.APIClient(this.apiAddress, '');
     let token = await client
       .authn()
       .sessions()
-      .createRootSession(this.rootPassword)
-      .then((val) => {
-        console.log(val);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+      .createUserSession();
+    localStorage.oidcToken = JSON.stringify(token);
+    window.location.href = token.authURL;
   }
 }
 
