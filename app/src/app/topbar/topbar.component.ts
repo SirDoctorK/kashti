@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as brigade from '@brigadecore/brigade-sdk';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-topbar',
@@ -10,7 +11,6 @@ import * as brigade from '@brigadecore/brigade-sdk';
 export class TopbarComponent implements OnInit {
 
   title = 'kashti';
-  apiAddress = ''; // Enter API address here
 
   showDiv = {
     login: true,
@@ -21,7 +21,7 @@ export class TopbarComponent implements OnInit {
   }
 
   async getToken() {
-    let client = new brigade.APIClient(this.apiAddress, '');
+    let client = new brigade.APIClient(environment.apiUrl, '');
     let token = await client
       .authn()
       .sessions()
