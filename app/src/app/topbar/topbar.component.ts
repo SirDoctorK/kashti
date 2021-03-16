@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as brigade from '@brigadecore/brigade-sdk';
+import { StorageService } from '../services/storage.service';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -15,7 +16,7 @@ export class TopbarComponent implements OnInit {
   showDiv = {
     login: true,
   };
-  constructor() { }
+  constructor(private storageService: StorageService) { }
 
   ngOnInit(): void {
   }
@@ -27,7 +28,7 @@ export class TopbarComponent implements OnInit {
       .sessions()
       .createUserSession();
     localStorage.oidcToken = JSON.stringify(token);
-    window.location.href = token.authURL;
+    window.open(token.authURL, '_blank');
   }
 }
 

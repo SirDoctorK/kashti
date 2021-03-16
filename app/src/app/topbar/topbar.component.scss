@@ -99,6 +99,8 @@
 }
 .active.container {
   animation: 6s Container;
+  background: #8C2200;
+  background: #8C2200;
 }
 .active .login {
   opacity: 0;
@@ -146,14 +148,13 @@
   75% { transform: scale(1.2); }
   77% { transform: scale(1); }
   94% { width: 38px }
-  100% { width: 135px; }
+  100% { width: 135px; background: #8C2200; }
 }
 @keyframes Login {
   0% { opacity: 1; transform: scale(1); }
   6% { opacity: 0; transform: scale(0.5); }
 
   94% { opacity: 0; transform: scale(0.5); }
-  //100% { opacity: 1; transform: scale(1); }
 }
 @keyframes Ok {
   0% { opacity: 0 }
@@ -168,7 +169,7 @@
 @keyframes Logout {
   0% { opacity: 0;}
   94% { opacity: 0; transform: scale(0.5); }
-  100% {opacity: 1; transform: scale(1);  }
+  100% {opacity: 1; transform: scale(1); }
 }
 
 @keyframes login-w {
