@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopbarComponent } from './topbar/topbar.component';
+import { StorageService } from './services/storage.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { TopbarComponent } from './topbar/topbar.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

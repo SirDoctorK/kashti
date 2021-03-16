@@ -1,29 +1,19 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable} from 'rxjs';
 
-export interface StorageChange {
-    key: string;
-    value: string;
-    storageArea: 'localStorage';
-}
-
-export interface StorageGetItem {
-    key: string;
-    storageArea: 'localStorage';
-}
-
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class StorageService {
-    public storageChange$: ReplaySubject<StorageChange> = new ReplaySubject();
+    private addUserSource = new BehaviorSubject<string>('false');
+    public addUser$ = this.addUserSource.asObservable();
 
-    constructor() {}
-
-    public setStorageItem(change: StorageChange): void {
-        window[change.storageArea].setItem(change.key, change.value);
-        this.storageChange$.next(change);
+    constructor() {
+        this.addUser$.subscribe(status => window.localStorage.setItem('has_login', status));
     }
 
-    public getStorageItem(getItem: StorageGetItem): void {
-        window[getItem.storageArea].getItem(getItem.key);
+    getAddUser(): Observable<string> {
+        let userStatus = window.localStorage.getItem('has_login');
+        userStatus = (userStatus === 'false' || userStatus == null) ? 'true' : 'false';
+        this.addUserSource.next(userStatus);
+        return this.addUser$;
     }
 }

@@ -31,9 +31,6 @@
   margin-left:5%;
 }
 
-.login-button {
-
-}
 
 .spacer {
   flex: 1;
@@ -99,8 +96,7 @@
 }
 .active.container {
   animation: 6s Container;
-  background: #8C2200;
-  background: #8C2200;
+  background: #D94B1E;
 }
 .active .login {
   opacity: 0;
@@ -148,7 +144,7 @@
   75% { transform: scale(1.2); }
   77% { transform: scale(1); }
   94% { width: 38px }
-  100% { width: 135px; background: #8C2200; }
+  100% { width: 135px; background: #D94B1E; }
 }
 @keyframes Login {
   0% { opacity: 1; transform: scale(1); }
