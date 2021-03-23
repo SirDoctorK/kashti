@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import * as brigade from '@brigadecore/brigade-sdk';
 import { environment } from '../../environments/environment';
 import { StorageService } from '../services/storage.service';
-import {NULL_AS_ANY} from "@angular/compiler-cli/src/ngtsc/typecheck/src/expression";
 
 @Component({
   selector: 'app-topbar',
@@ -16,9 +15,6 @@ export class TopbarComponent implements OnInit {
   subscription: any;
   status = 'false';
 
-  showDiv = {
-    login: true,
-  };
   constructor(private storageService: StorageService) {}
 
   ngOnInit(): void {
@@ -28,29 +24,27 @@ export class TopbarComponent implements OnInit {
         }
     );
   }
-
   // tslint:disable-next-line:typedef
   async checkStatus() {
-    const client = new brigade.APIClient(environment.apiUrl, '');
-    if (this.subscription) {
+    const container = document.querySelector('.container');
+    const session = JSON.parse(localStorage.getItem('oidcToken') || '{}');
+    const token =  session.token || '';
+    if (this.subscription && token !== '') {
       this.subscription.unsubscribe();
-      // const token = await client
-      //     .authn()
-      //     .sessions().delete();
-      // localStorage.oidcToken = JSON.stringify(token);
-      // console.log('destroyed');
-    }
-    this.subscription = this.storageService.getAddUser().subscribe();
-    if (localStorage.getItem('oidcToken') === null) {
-      const token = await client
+      container?.classList.remove('active');
+      const client = new brigade.APIClient(environment.apiUrl, token);
+      await client.authn().sessions().delete();
+      localStorage.removeItem('oidcToken');
+    }else if (typeof this.subscription === 'undefined' || token === '') {
+      const client = new brigade.APIClient(environment.apiUrl, '' );
+      const cToken = await client
           .authn()
           .sessions()
           .createUserSession();
-      localStorage.oidcToken = JSON.stringify(token);
-      window.open(token.authURL, '_blank');
+      container?.classList.add('active');
+      localStorage.oidcToken = JSON.stringify(cToken);
+      window.open(cToken.authURL, '_blank');
     }
+    this.subscription = this.storageService.getAddUser().subscribe();
   }
 }
-
-
-
