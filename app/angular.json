@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "app": {
+    "kashti": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/app",
+            "outputPath": "dist/kashti",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "app:build"
+            "browserTarget": "kashti:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "app:build:production"
+              "browserTarget": "kashti:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "app:build"
+            "browserTarget": "kashti:build"
           }
         },
         "test": {
@@ -116,16 +116,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "app:serve"
+            "devServerTarget": "kashti:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "app:serve:production"
+              "devServerTarget": "kashti:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "app"
+  "defaultProject": "kashti"
 }
