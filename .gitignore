@@ -5,8 +5,5 @@
 .idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml
-app/src/environments/
-app/package-lock.json
 .idea/deployment.xml
 .idea/deployment.xml
-app/package-lock.json
